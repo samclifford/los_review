@@ -32,6 +32,7 @@ calculated_distribution <-
                 type    = c("General", "ICU")) %>%
     dplyr::rowwise(.) %>%
     tidyr::nest(data = -c(setting, type)) %>%
+    dplyr::ungroup(.) %>%
     dplyr::mutate(id = 1:nrow(.))
 
 calculated_distribution$distribution <-
